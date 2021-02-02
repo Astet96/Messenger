@@ -43,4 +43,4 @@ styles.css:
 This file contains all the styling for the web app. All of the code was written by me, unless stated otherwise
 inside the file. To achieve certain effects and animations I have adapted code from w3schools and stackoverflow
 question threads. All credit is given inside the css file as commented text.
-# Messengger
+# Messenger
