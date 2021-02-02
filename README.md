@@ -1,3 +1,6 @@
+Video Demonstration:
+https://youtu.be/DusKAeGws6s
+
 My project is at it's core a real time messenger app, much like WhatsApp and Discord in functionality and appearance.
 The app fully supports sending and receiving image files, as well as automatic file system management of said files.
 The app supports 1-to-1 and group chats, with admin and moderator settings available for the later.
