@@ -168,27 +168,42 @@ def load_notifications(request):
     notif = Notification.objects.filter(notified_user=request.user)
     counter = notif.count()
     if counter > 0:
-        notified_user = []
-        notified_group = []
-        notif_type = []
-        var1 = []
-        var2 = []
-        for i in range(counter):
-            notified_user.append(notif[i].notified_user.id)
-            notif_type.append(notif[i].notif_type)
-            var1.append(notif[i].var1)
-            if notif_type[i] in [3, 4, 5, 6, 7]:
-                var2.append(notif[i].var2)
-            elif notif_type[i] in [0, 1, 2]:
-                var2.append(User.objects.get(id = notif[i].var1).username)
-            if notif_type[i] == 4:
-                notified_group.append(notif[i].notified_group.id)
-            else:
-                notified_group.append('-1')
-        # notif_group is appended with '-1' so that the group notification index will be synced up
-        # if this was not done, than the array of group notifications would be likely shorter than the other notifications array
-        # and would cause problems inside javascript when attempting to render these correctly
-        # by using -1 for all non-group notifications, the index will stay inline for all notifications, allowing for a direct pass from start to end without needing further logic checks
+        sw = True
+        while sw:
+            notified_user = []
+            notified_group = []
+            notif_type = []
+            var1 = []
+            var2 = []
+            for i in range(counter):
+                try:    # solves a bug in retreiving notifications if a user deletes thair acount under specific circumstances due to race conditions
+                    notified_user.append(notif[i].notified_user.id)
+                    notif_type.append(notif[i].notif_type)
+                    var1.append(notif[i].var1)
+                    if notif_type[i] in [3, 4, 5, 6, 7]:
+                        var2.append(notif[i].var2)
+                    elif notif_type[i] in [0, 1, 2]:
+                        var2.append(User.objects.get(id = notif[i].var1).username)
+                    if notif_type[i] == 4:
+                        notified_group.append(notif[i].notified_group.id)
+                    else:
+                        notified_group.append('-1')
+                    if notif_type[i] in [0, 1, 2, 3, 4, 7]:
+                        test = User.objects.get(id = notif[i].var1).username
+                    # notif_group is appended with '-1' so that the group notification index will be synced up
+                    # if this was not done, than the array of group notifications would be likely shorter than the other notifications array
+                    # and would cause problems inside javascript when attempting to render these correctly
+                    # by using -1 for all non-group notifications, the index will stay inline for all notifications, allowing for a direct pass from start to end without needing further logic checks
+                except:
+                    Notification.objects.get(id = notif[i].id).delete()
+                    break
+            sw = False
+        notif = Notification.objects.filter(notified_user=request.user)
+        counter = notif.count()
+        if counter == 0:
+            return JsonResponse({
+                "counter": counter
+            })
     else:
         return JsonResponse({
             "counter": counter
