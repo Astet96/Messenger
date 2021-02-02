@@ -1,0 +1,24 @@
+{% extends "Messenger/template.html" %}
+
+{% block title %}
+    <title>Messenger: Login</title>
+{% endblock %}
+
+{% block body %}
+    <div class="register-login">
+        <h1>Login</h1>
+        {% for error in errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        <form class="log-reg_form" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? Register <a href="{% url 'register' %}">here</a>.</p>
+    </div>
+
+{% endblock %}

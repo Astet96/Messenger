@@ -1,0 +1,30 @@
+{% extends "Messenger/template.html" %}
+
+{% block title %}
+    <title>Messenger: Register</title>
+{% endblock %}
+
+{% block body %}
+    <div class="register-login">
+        <h1>Register</h1>
+        {% for error in errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+        <form class="log-reg_form" action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Your email</label>
+            <input type="email" name="email" placeholder="your@email.ex">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username">
+            <label>Profile Image</label>
+            <input id="img_upload" type="file" name="profile_img" accept="image/*" onchange="image_upload()">
+            <div class="register_img_upload" onclick="document.getElementById('img_upload_btn').click()"><label for="img_upload" id="img_upload_btn" class="register_img_text">Choose Image</label></div>
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password">
+            <label>Retype Password</label>
+            <input type="password" name="password_confirmation" placeholder="password confirmation">
+            <input type="submit" value="Register">
+        </form>
+        <p>Have an account? Login <a href="{% url 'login' %}">here</a>.</p>
+    </div>
+{% endblock %}

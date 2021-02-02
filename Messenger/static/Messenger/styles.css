@@ -1,0 +1,971 @@
+/* color scheme generated at: https://coolors.co */
+:root {
+    --eerie-black: #222222ff;
+    --mantis: #78bc61ff;
+    --teal-blue: #437f97ff;
+    --cultured: #f7f7f9ff;
+    --light-steel-blue: #bfd7ffff;
+}
+
+/* unselectable text method from: https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable */
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.error {
+    display: flex;
+    color: red;
+    font-weight: bold;
+    align-self: center;
+    background-color: var(--cultured);
+    border-radius: 5px;
+}
+
+.error.hidden {
+    color: var(--teal-blue);
+    background-color: var(--teal-blue);
+}
+
+/* Overlay style from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_overlay_text */
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    cursor: default;
+  }
+
+.close_overlay {
+    position: fixed;
+    width: 35px;
+    height: 35px;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.x_1, .x_2 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--cultured);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.x_1 {
+    transform: rotate(-45deg) translate(-2px, 6px);
+}
+
+.x_2 {
+    transform: rotate(45deg) translate(-2px, -5px);
+}
+
+.overlay_box {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    max-height: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--teal-blue);
+    border-radius: 5px;
+}
+
+#overlay_title {
+    margin-top: 40px;
+    font-size: xx-large;
+    font-weight: bold;
+    color: var(--cultured);
+    align-self: center;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.no_notif{
+    color: var(--cultured);
+    text-align: center;
+}
+
+.row_box {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    align-self: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: var(--cultured) var(--teal-blue);
+}
+
+.row_box::-webkit-scrollbar-track {
+    background: var(--teal-blue);
+}
+
+.row_box::-webkit-scrollbar-thumb {
+    background-color: var(--cultured);
+    border-radius: 20px;
+    border: 3px solid var(--cultured);
+}
+
+.break {
+    height: 1px;
+    width: 100%;
+    background-color: var(--cultured);
+}
+
+.overlay_content_row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-self: center;
+    box-shadow: 0px 15px 2px -15px var(--cultured);
+    cursor: pointer;
+}
+
+.overlay_content_row .profile_pic_small {
+    align-self: center;
+}
+
+.new_group_link {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+.new_group {
+    color: var(--cultured);
+    font-weight: bold;
+    align-self: center;
+    margin-right: 0px;
+}
+
+.group_add_options {
+    justify-content: left;
+    align-content: center;
+    box-shadow: none;
+    margin-bottom: none;
+    height: 40px;
+    cursor: default;
+}
+
+.overlay_search_box {
+    min-width: 250px;
+    width: 250px;
+    height: 40px;
+    border: 0px;
+    margin-right: auto;
+}
+
+.notif_text, .options_text_green, .options_text_red {
+    color: var(--cultured);
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.notif_hover:hover {
+    cursor: pointer;
+}
+
+.options_text_green, .options_text_red {
+    align-self: center;
+}
+
+.options_text_red:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.options_text_green:hover {
+    color: var(--mantis);
+    cursor: pointer;
+}
+
+.align_right {
+    margin-left: auto;
+}
+
+.notif {
+    cursor: default;
+    transition: height 0.4s, opacity 0.4s;
+    height: 50px;
+}
+
+.notif_clicked {
+    opacity: 0;
+}
+
+.notif_remove {
+    height: 0;
+}
+
+.friend_accept_button, .friend_decline_button {
+    height: auto;
+    align-self: center;
+    cursor: pointer;
+}
+
+.friend_accept_button {
+    margin-left: auto;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.friend_decline_button {
+    background-color: red;
+    margin-right: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.add_friend_link, .add_group_link {
+    display: none;
+    margin-left: auto;
+    margin-right: 15px;
+    color: var(--cultured);
+    cursor: pointer;
+}
+
+.add_group_link.added_to_group_link {
+    display: flex;
+}
+
+/* Animated menu button method from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
+.menu_icon {
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--mantis);
+    height: 40px;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--cultured);
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+  
+.change .bar3 {
+    transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* misc */
+/* scrollbar styling from: https://www.digitalocean.com/community/tutorials/css-scrollbars */
+.notifications, .account_settings {
+    cursor: pointer;
+}
+
+* {
+    font-family: sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mantis) var(--eerie-black);
+}
+  
+*::-webkit-scrollbar {
+    width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--eerie-black);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--mantis);
+    border-radius: 20px;
+    border: 3px solid var(--eerie-black);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    resize: none;
+    border: 5px;
+    scrollbar-color: var(--eerie-black) white;
+}
+
+textarea::-webkit-scrollbar-track {
+    background: white;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--eerie-black);
+    border-radius: 20px;
+    border: 3px solid var(--eerie-black);
+}
+
+button {
+    border: 0px;
+    border-radius: 5px;
+    background-color: var(--mantis);
+    color: var(--cultured);
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+    color: var(--cultured);
+    margin-top: 20px;
+    align-self: center;
+}
+
+input[type=text], input[type=email], input[type=password], input[type=submit], .register_img_upload {
+    width: 250px;
+    height: 2em;
+    border: 0px;
+    border-radius: 5px;
+    align-self: center;
+    background-color: var(--cultured);
+    margin-top: 4px;
+}
+
+.register_img_upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.register_img_text {
+    display: block;
+    margin-top: 0px;
+    color: var(--teal-blue);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+input[type=file] {
+    display: none;
+}
+
+input[type=submit] {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: var(--teal-blue);
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
+
+.new_group_mask_button, .send_img_mask_button {
+    width: 250px;
+    height: 2em;
+    border: 0px;
+    border-radius: 5px;
+    align-self: center;
+    background-color: var(--cultured);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: var(--teal-blue);
+}
+
+.new_group_mask_button:hover, .send_img_mask_button:hover {
+    cursor: pointer;
+}
+
+.log-reg_form {
+    max-height: 60%;
+    overflow-y: auto;
+}
+
+.register-login {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    flex-direction: column;
+    background-color: var(--teal-blue);
+    border: 0px;
+    border-radius: 5px;
+    width: 450px;
+    height: fit-content;
+    max-height: 90%;
+}
+
+.register-login > a {
+    align-self: center;
+    margin-bottom: 30px;
+}
+
+.register-login > a > button:hover {
+    cursor: pointer;
+}
+
+.register-login > a > button {
+    width: 250px;
+    height: 2em;
+    border: 0px;
+    border-radius: 5px;
+    background-color: var(--cultured);
+    
+    font-weight: bold;
+    color: var(--teal-blue);
+}
+
+.register-login > h1 {
+    text-align: center;
+    color: var(--cultured);
+}
+
+.register-login > p {
+    align-self: center;
+    font-weight: lighter;
+    color: var(--cultured);
+}
+
+.register-login > p > a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--mantis);
+}
+
+/* navbar */
+.navbar {
+    background-color: var(--eerie-black);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 40px;
+}
+
+.search_div {
+    display: flex;
+    height: 40px;
+    margin-right: auto;
+    flex: 1;
+}
+
+.search_box {
+    width: 251px;
+    border: 0px;
+}
+
+.logo_div {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.menu_div {
+    display: flex;
+    flex-direction: row-reverse;
+    height: auto;
+    margin-left: auto;
+    flex: 1;
+}
+
+.logo {
+    color: var(--cultured);
+    font-weight: bold;
+    font-size: larger;
+    text-decoration: none;
+}
+
+#navbar_mask {
+    display: flex;
+    height: 40px;
+    background-color: var(--eerie-black);
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: 0.4s;
+    position: absolute;
+    top: 0;
+    right: 35px;
+    z-index: 1;
+}
+
+#navbar_items {
+    display: inline-flex;
+    align-items: center;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 40px;
+    background-color: var(--mantis);
+    position: absolute;
+    top: 0;
+    right: 35px;
+    z-index: 0;
+}
+
+#navbar_items > li > a {
+    color: var(--cultured);
+    text-decoration: none;
+    margin: 5px;
+}
+
+#navbar_items > li {
+    display: inline;
+}
+
+/* body */
+body {margin: 0;}
+
+#body_wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/* for loged in users */
+.contact_list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 250px;
+    background-color: var(--eerie-black);
+}
+
+.friend_list, .group_list {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--eerie-black);
+    height: calc(100vh - 80px);
+    transition: height 0.4s;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.friend_list.displayed, .group_list.displayed {
+    height: 0;
+}
+
+.friend_list.scroll, .group_list.scroll {
+    overflow-y: scroll;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    width: 250px;
+    justify-content: left;
+    align-items: center;
+    white-space: nowrap;
+    box-shadow: 0px 15px 2px -15px var(--cultured);
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.contact:hover {
+    cursor: pointer;
+}
+
+.contact_friend_card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.contact_friend_card:hover {
+    cursor: pointer;
+}
+
+.contact_hover:hover {
+    background-color: var(--mantis);
+}
+
+.contact_hover_red:hover {
+    background-color: red;
+}
+
+.profile_pic_small {
+    display: flex;
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--cultured);
+    border: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.contact_name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: var(--cultured);
+}
+
+.group_add {
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: 15px;
+    color: var(--cultured);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.contact_list_togle {
+    display: flex;
+    background-color: var(--teal-blue);
+    height: 30px;
+    min-height: 30px;
+    font-weight: bold;
+    color: var(--cultured);
+    justify-content: center;
+    align-items: center;
+    border-top: 0px solid var(--cultured);
+}
+
+.contact_list_togle.top_togle {
+    border-top: 0px;
+}
+
+.contact_list_togle:hover {
+    cursor: pointer;
+}
+
+/* animate open/close contact list */
+.line1, .line2, .line3, .line4 {
+    width: 10px;
+    height: 3px;
+    border: none;
+    background-color: var(--cultured);
+    margin-left: 6px;
+    transition: 0.4s;
+}
+
+.line1, .line3 {
+    transform: rotate(-135deg) translate(-3px, -3px);
+    margin-bottom: 2px;
+}
+
+.line2, .line4 {
+    transform: rotate(135deg) translate(-4px, -3px);
+    margin-bottom: 2px;
+}
+
+.line1.change, .line3.change {
+    transform: rotate(-45deg);
+    
+}
+  
+.line2.change, .line4.change {
+    transform: rotate(45deg);
+}
+
+/* texting area */
+.chat_container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-left: 1px solid var(--cultured);
+    width: calc(100% - 250px);
+}
+
+.chat_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    background-color: var(--mantis);
+    border-bottom: 5px solid var(--eerie-black);
+}
+
+.chat_info:hover {
+    cursor: pointer;
+}
+
+.chat_area {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 190px);
+    width: 100%;
+    background-color: var(--eerie-black);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.friend_message, .user_message {
+    display: flex;
+    height: auto;
+    width: fit-content;
+    max-width: 45%;
+    border-radius: 5px;
+    margin: 5px;
+    align-items: center;
+}
+
+.friend_message > p, .user_message > p {
+    text-align: left;
+    color: var(--cultured);
+}
+
+.user_message > p {
+    margin-left: 15px;
+}
+
+.friend_message > p {
+    margin-right: 15px;
+}
+
+.friend_message {
+    flex-direction: row;
+    justify-content: left;
+    background-color: var(--mantis);
+    margin-right: auto;
+}
+
+.group_friend_message {
+    display: flex;
+    flex-direction: column;
+}
+
+.group_friend_message.pic_message {
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: var(--teal-blue);
+}
+
+.group_friend_message.pic_message :first-child > p {
+    text-align: center;
+    color: var(--cultured);
+    font-weight: bold;
+}
+
+.group_friend_message > div > p, .group_friend_message > p {
+    color: var(--cultured);
+    margin-right: 15px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.group_friend_message > div > p {
+    font-weight: bold;
+    color: var(--eerie-black);
+}
+
+.chat_profile_pic {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+/* background gradient color method from: https://stackoverflow.com/questions/19081355/how-can-apply-multiple-background-color-to-one-div/19082814 */
+.friend_message .chat_profile_pic {
+    background: -moz-linear-gradient(left, var(--eerie-black) 0%,var(--eerie-black) 50%, var(--mantis) 50%, var(--mantis) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,var(--eerie-black)), color-stop(50%,var(--eerie-black)), color-stop(50%,var(--mantis)), color-stop(100%,var(--mantis))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, var(--eerie-black) 0%,var(--eerie-black) 50%,var(--mantis) 50%,var(--mantis) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, var(--eerie-black) 0%,var(--eerie-black) 50%,var(--mantis) 50%,var(--mantis) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, var(--eerie-black) 0%,var(--eerie-black) 50%,var(--mantis) 50%,var(--mantis) 100%); /* IE10+ */
+    background: linear-gradient(to right, var(--eerie-black) 0%,var(--eerie-black) 50%,var(--mantis) 50%,var(--mantis) 100%); /* W3C */
+}
+
+.user_message .chat_profile_pic {
+    background: -moz-linear-gradient(left, var(--teal-blue) 0%, var(--teal-blue) 50%, var(--eerie-black) 50%, var(--eerie-black) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,var(--teal-blue)), color-stop(50%,var(--teal-blue)), color-stop(50%,var(--eerie-black)), color-stop(100%,var(--eerie-black))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  var(--teal-blue) 0%,var(--teal-blue) 50%,var(--eerie-black) 50%,var(--eerie-black) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  var(--teal-blue) 0%,var(--teal-blue) 50%,var(--eerie-black) 50%,var(--eerie-black) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  var(--teal-blue) 0%,var(--teal-blue) 50%,var(--eerie-black) 50%,var(--eerie-black) 100%); /* IE10+ */
+    background: linear-gradient(to right,  var(--teal-blue) 0%,var(--teal-blue) 50%,var(--eerie-black) 50%,var(--eerie-black) 100%); /* W3C */
+}
+
+.user_message {
+    flex-direction: row-reverse;
+    justify-content: right;
+    background-color: var(--teal-blue);
+    margin-left: auto;
+}
+
+.typing_area {
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    width: 100%;
+    background-color: var(--eerie-black);
+}
+
+.new_message {
+    margin: 5px;
+    margin-right: 0px;
+    margin-left: 0px;
+    width: calc(100% - 90px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.send_btn {
+    margin: 5px;
+    margin-left: 0px;
+    width: 70px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.send_img_button {
+    margin: 5px;
+    margin-right: 0px;
+    width: 70px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: var(--teal-blue);
+}
+
+.end_of_messages {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-weight: bold;
+    width: fit-content;
+    color: var(--cultured);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.img_message {
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.hidden_message {
+    opacity: 0;
+}
+
+.chat_area_overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: var(--eerie-black);
+    color: var(--cultured);
+    padding-left: 5px;
+    overflow: scroll;
+    opacity: 100%;
+    z-index: 1;
+    border-top: 1px solid var(--cultured);
+}
+
+.chat_area_overlay > p {
+    text-align: justify;
+    width: calc(100% - 270px);
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.disabled {
+    opacity: 0;
+    max-width: 0px;
+}
+
+.mobile {
+    width: 100%;
+}
+
+.bottom_menu {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: calc(100% - 40px);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+.bottom_menu_btn {
+    font-weight: bold;
+    border: 1px solid var(--cultured);
+    background-color: var(--eerie-black);
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#body_wrapper.contact_search {
+    top: 80px;
+}
+
+.chat_area_overlay.contact_search{
+    top: 80px;
+}
+
+/*Mobile display*/
+@media screen and (max-width:800px) {
+    .chat_area_overlay > p {
+        width: calc(100% - 5px);
+    }
+    .contact {
+        width: 100%;
+    }
+    #body_wrapper, .chat_area_overlay{
+        bottom: 40px;
+    }
+    .chat_area_overlay {
+        height: calc(100% - 81px);
+        top: 40px;
+    }
+    .bottom_menu {
+        visibility: visible;
+    }
+    .search_div {
+        position: absolute;
+        top: 40px;
+        z-index: 2;
+    }
+    .contact_list {
+        position: absolute;
+        z-index: 2;
+    }
+    .friend_list, .group_list {
+        height: calc(100vh - 180px);
+    }
+    .friend_message, .user_message {
+        max-width: 60%;
+    }
+    .chat_container {
+        border-left: 0px;
+    }
+    .logo_div {
+        justify-content: left;
+        align-items: left;
+    }
+}

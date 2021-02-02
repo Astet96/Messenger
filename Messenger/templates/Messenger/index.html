@@ -1,0 +1,81 @@
+{% extends "Messenger/template.html" %}
+
+{% block title %}
+    <title>Messenger: Home</title>
+{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+
+        <!-- Global Search results displayed here -->
+        <div id="overlay">
+            <div class="overlay_box">
+                <div class="close_overlay" onclick="close_overlay()">
+                    <div class="x_1"></div>
+                    <div class="x_2"></div>
+                </div>
+                <!-- Search results go here -->
+                <div id="overlay_title"></div>
+                <div id="row_items" class="row_box"></div>
+            </div>
+        </div>
+
+        <div id="contact_list" class="contact_list">
+
+            <div id="friend_togle" class="contact_list_togle top_togle" onclick="contact_list_togle(1)">
+                <div>Friends</div>
+                <div>
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                </div>
+            </div>
+            <div class="friend_list scroll" id="friend_bar"></div>
+
+            <div id="group_togle" class="contact_list_togle" onclick="contact_list_togle(2)">
+                <div>Groups</div>
+                <div>
+                    <div class="line3"></div>
+                    <div class="line4"></div>
+                </div>
+            </div>
+            <div class="group_list scroll" id="group_bar"></div>
+
+        </div>
+
+        <div class="chat_container" id="chat_container">
+
+            <div class="chat_area_overlay" id="chat_area_overlay">
+                <h1>About Messenger</h1>
+                <p>This app was made as part of Harvard's CS50Web programming with Python and JavaScript course. The goal of this app is to be a fully functional instant messenger.
+                    At it's core, this app is inspired from services like WhatsApp and Discord, the goal being to emulate and combine the most important features that make these
+                    platforms shine above their competitors.
+                </p>
+                <p>As such, I have fully implementet 1-on-1 chat functionality, as well as group-chats. In doing so I learned basic file management to allow for the sending and
+                    receiving of images, including managing the file system and deleting imagae files when they are no longer needed (i.e. a user changes their profile pic).
+                    Moreover, to facilitate the chat functionality I learned to use, and implemented basic websockets, using the Channels framework for Django in Python, as well as
+                    Redis server, running on Ubuntu on the linux subsystem for windows 10.
+                </p>
+            </div>
+
+            <div id="chat_banner" class="chat_info">
+                <p class="contact_name" id="chatting_with_name"></p>
+            </div>
+
+            <div class="chat_area" id="chat_area_content"></div>
+
+            <div class="typing_area">
+                <button class="send_img_button" id="send_image_button">Send Image</button>
+                <textarea class="new_message" id="text_message_content" onkeyup="check_and_send(event)"></textarea>
+                <button class="send_btn" id="send_text_button">Send Text</button>
+            </div>
+
+        </div>
+
+    {% else %}
+        <div class="register-login">
+            <h1>Login or Register</h1>
+            <a href="{% url 'login' %}"><button>Login</button></a>
+            <a href="{% url 'register' %}"><button>Register</button></a>
+        </div>
+    {% endif %}
+{% endblock %}

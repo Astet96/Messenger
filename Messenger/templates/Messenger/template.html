@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'favicon.ico' %}"">
+        <link href="{% static 'Messenger/styles.css' %}?={{ random }}" rel="stylesheet">
+        <script src="{% static 'Messenger/scripts.js' %}?={{ random }}"></script>
+        {% block title %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar">
+            {% if user.is_authenticated %}
+                <!-- Search box -->
+                <div id="search_div" class="search_div">
+                    <input type="search" id="search_text" class="search_box" placeholder="Friends & Groups" onkeyup="search(event)">
+                </div>
+            {% endif %}
+            <div class="logo_div">
+                <a class="logo" href="{% url 'index' %}">Messenger</a>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="menu_div">
+                    <!-- Animated menu button method from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js -->
+                    <div class="menu_icon" id="nav_menu" onclick="menu_click(this)" option="1">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                    <div id="navbar_mask"></div>
+                    <ul id="navbar_items">
+                        <li>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        <li>
+                            <a class="notifications" onclick="show_notifications()">Notifications</a>
+                        </li>
+                        <li>
+                            <a class="account_settings" onclick="show_account_settings()">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+            {% else %}
+                <div id="navbar_mask"></div>
+                <ul id="navbar_items"></ul>
+            {% endif %}
+        </nav>
+
+        <div id="body_wrapper">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="bottom_menu">
+                    <button class="bottom_menu_btn" onclick="max_contacts()">Contacts</button>
+                    <button class="bottom_menu_btn" onclick="max_chat()">Chat</button>
+            </div>
+        {% endif %}
+
+    </body>
+</html>
